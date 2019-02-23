@@ -29,6 +29,10 @@ There's two options to run the application (on both cases the app will run on po
 In this case just restart your machine, and before login don't forget to bring your coffee cup 😂.
 Enter your credentials, and hit login, and your user should be added to the DB, navigate to localhost:5000, it should be listed there.
 
+Or execute the ```file docker-env.sh``` which will run the application inside docker env
+  - ```chmod +x docker-env.sh```
+  - ```./docker-env.sh```
+
 ![users list](https://i.imgur.com/GpyIeiV.jpg)
 
 
