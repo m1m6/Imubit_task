@@ -1,0 +1,45 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:5.7
+    ports:
+          - 3306:3306
+    restart: always
+    volumes:
+      - ../mysql:/docker-entrypoint-initdb.d
+    environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_USERNAME=root
+        - MYSQL_DATABASE=users_flask
+    networks:
+          - flask-server-nw
+    container_name: flask-server-mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8181:80
+    environment:
+      - MYSQL_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=root
+      - PMA_HOST=mysql
+    depends_on:
+      - mysql
+    networks:
+          - flask-server-nw
+
+  flask-server1:
+    build:
+      context : ../
+    ports:
+          - 5000:5000
+    restart: always
+    depends_on:
+          - mysql
+    networks:
+          - flask-server-nw
+    container_name: flask-server1
+
+networks:
+  flask-server-nw:
+    driver: bridge

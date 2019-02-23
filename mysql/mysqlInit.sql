@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS `users_flask`;
+
+USE `users_flask`;
+
+CREATE TABLE IF NOT EXISTS `users`(
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `username` VARCHAR(255),
+    `login_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `login_type` VARCHAR(255) NULL DEFAULT NULL,
+    PRIMARY KEY(`id`)
+);

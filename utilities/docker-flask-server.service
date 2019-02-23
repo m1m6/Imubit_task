@@ -1,0 +1,12 @@
+[Unit]
+Description=Flask container
+Requires=docker-compose.service
+After=docker-compose.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker-compose start -f /home/mahmoud/PycharmProjects/Imubit_task/compose/docker-compose.yml
+ExecStop=/usr/bin/docker-compose stop -f /home/mahmoud/PycharmProjects/Imubit_task/compose/docker-compose.yml
+
+[Install]
+WantedBy=default.target

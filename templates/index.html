@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <title>Imubit Task!</title>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 5px;
+      }
+      th {
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h3>Users list</h3>
+    <div id="usersList">
+      <table style="width:50%" id="userTable">
+        <thead>
+          <th>
+            Login date
+          </th>
+          <th>
+            Username
+          </th>
+          <th>
+            Login type
+          </th>
+        </thead>
+        <tbody>
+           {% for user in users_list %}
+            <tr>
+              <td>{{ user.login_date }}</td>
+              <td>{{ user.username }}</td>
+              <td> {{ user.login_type }} </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+
+      </table>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
+    <script type="text/javascript">
+      var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+      socket.on('user_login_action', function( recent_user ) {
+          console.log( recent_user )
+          if (recent_user){
+            var parsed_json = JSON.parse(recent_user);
+            $( '#userTable tbody' ).append(
+            '<tr><td>'+parsed_json.login_date+'</td><td>'+parsed_json.username+'</td><td>'+parsed_json.login_type+'</td></tr>' )
+          }
+      })
+    </script>
+  </body>
+  </html>
