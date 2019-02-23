@@ -19,7 +19,7 @@
       - ExecStart=/usr/bin/docker-compose start -f ```/home/mahmoud/PycharmProjects/Imubit_task/compose/docker-compose.yml```
       - ExecStop=/usr/bin/docker-compose stop -f ```/home/mahmoud/PycharmProjects/Imubit_task/compose/docker-compose.yml```
     - Copy ```docker-flask-server.service``` to ```/etc/systemd/system/```
-    ```cp docker-flask-server.service /etc/systemd/system/```
+      - ```cp docker-flask-server.service /etc/systemd/system/```
 
 
 ### Running the application
