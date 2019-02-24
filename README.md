@@ -20,6 +20,8 @@
       - ExecStop=/usr/bin/docker-compose stop -f ```/home/mahmoud/PycharmProjects/Imubit_task/compose/docker-compose.yml```
     - Copy ```docker-flask-server.service``` to ```/etc/systemd/system/```
       - ```cp docker-flask-server.service /etc/systemd/system/```
+    - Enable the service at startup
+      - ``` sudo systemctl enable docker-flask-server.service```
 
 
 ### Running the application
