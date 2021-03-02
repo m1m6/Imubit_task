@@ -10,14 +10,14 @@
   - Clone this repo.
   - Open terminal and navigate to project root Dir
     ``` 
-    USER@ubuntu:~$ cd ~/Imubit_task
+    USER@ubuntu:~$ cd ~/monitor-linux-login
     ```
   - Under utilites folder, there will be two files (shell and service).
   - Copy ```after_login_trigger.sh``` to ```/etc/profile.d``` folder
     - ```cp after_login_trigger.sh /etc/profile.d```
   - Open ```docker-flask-server.service``` file with any editor, and update the path for ```docker-compose.yml``` file according to the file location in your machine.
-      - ExecStart=/usr/bin/docker-compose start -f ```/home/mahmoud/PycharmProjects/Imubit_task/compose/docker-compose.yml```
-      - ExecStop=/usr/bin/docker-compose stop -f ```/home/mahmoud/PycharmProjects/Imubit_task/compose/docker-compose.yml```
+      - ExecStart=/usr/bin/docker-compose start -f ```/home/mahmoud/PycharmProjects/monitor-linux-login/compose/docker-compose.yml```
+      - ExecStop=/usr/bin/docker-compose stop -f ```/home/mahmoud/PycharmProjects/monitor-linux-login/compose/docker-compose.yml```
     - Copy ```docker-flask-server.service``` to ```/etc/systemd/system/```
       - ```cp docker-flask-server.service /etc/systemd/system/```
     - Enable the service at startup
@@ -41,7 +41,7 @@ Or execute the ```file docker-env.sh``` which will run the application inside do
 ##### 2- Through IDE
   - Go to file ```db_model.py``` and update the ```host``` to be ```localhost```, also update db credentials ```user``` and ```passwrod``` if they are required to be changed.
   - Using workbench/ phpmyadmin, or any DBMS, create a new database ```users_flask```, and apply the content of the file
-  ```Imubit_task/mysql/mysqlInit.sql``` to that DB.
+  ```monitor-linux-login/mysql/mysqlInit.sql``` to that DB.
   - On the root DIR, execute ```python login_watcher.py```
 
 ### How to use
